@@ -2,12 +2,7 @@
 #include <algorithm>
 #include <cstdarg>
 
-#ifdef LINUX
-//#include <cstdlib>
-#include <sys/stat.h>
-#endif
-
-#ifdef __DJGPP__
+#if defined(LINUX) || defined(__DJGPP__)
 #include <sys/stat.h>
 #endif
 
@@ -465,7 +460,7 @@ void game::DrawEverythingNoBlit(bool AnimationDraw)
       vector2d ScreenCordinates = CalculateScreenCoordinates(CursorPos);
 
       if(DoZoom())
-	DOUBLE_BUFFER->StretchBlit(DOUBLE_BUFFER, ScreenCordinates, RES.X - 96, RES.Y - 96, 16, 16, 5);
+	DOUBLE_BUFFER->StretchBlit(DOUBLE_BUFFER, ScreenCordinates, RES_X - 96, RES_Y - 96, 16, 16, 5);
 
       igraph::DrawCursor(ScreenCordinates);
     }
@@ -514,7 +509,7 @@ uchar game::Load(const std::string& SaveName)
 
   if(Version != SAVE_FILE_VERSION)
     {
-      if(!iosystem::Menu(0, RES >> 1, "Sorry, this save is incompatible with the new version.\rStart new game?\r","Yes\rNo\r", LIGHT_GRAY))
+      if(!iosystem::Menu(0, vector2d(RES_X >> 1, RES_Y >> 1), "Sorry, this save is incompatible with the new version.\rStart new game?\r","Yes\rNo\r", LIGHT_GRAY))
 	return NEW_GAME;
       else
 	return BACK;
@@ -1019,7 +1014,7 @@ bool game::HandleQuitMessage()
     {
       if(IsInGetCommand())
 	{
-	  switch(game::Menu(0, RES >> 1, "Do you want to save your game before quitting?\r","Yes\rNo\rCancel\r", LIGHT_GRAY))
+	  switch(game::Menu(0, vector2d(RES_X >> 1, RES_Y >> 1), "Do you want to save your game before quitting?\r","Yes\rNo\rCancel\r", LIGHT_GRAY))
 	    {
 	    case 0:
 	      Save();
@@ -1036,7 +1031,7 @@ bool game::HandleQuitMessage()
 	    }
 	}
       else
-	if(!game::Menu(0, RES >> 1, "You can't save at this point. Are you sure you still want to do this?\r", "Yes\rNo\r", LIGHT_GRAY))
+	if(!game::Menu(0, vector2d(RES_X >> 1, RES_Y >> 1), "You can't save at this point. Are you sure you still want to do this?\r", "Yes\rNo\r", LIGHT_GRAY))
 	  RemoveSaves();
 	else
 	  {
@@ -1046,9 +1041,9 @@ bool game::HandleQuitMessage()
 	  }
     }
 
-  return true;
-
 #endif /* USE_SDL */
+
+  return true;
 }
 
 uchar game::GetDirectionForVector(vector2d Vector)
@@ -1120,7 +1115,7 @@ void game::BusyAnimation(bitmap* Buffer)
 	  ElpuriLoaded = true;
 	}
 
-      vector2d Pos(RES.X >> 1, (RES.Y << 1) / 3);
+      vector2d Pos(RES_X >> 1, (RES_Y << 1) / 3);
       Buffer->Fill(Pos.X - 100, Pos.Y - 100, 200, 200, 0);
       Rotation += 0.02;
 
@@ -1218,7 +1213,7 @@ vector2d game::PositionQuestion(const std::string& Topic, vector2d CursorPos, vo
     }
 
   DOUBLE_BUFFER->Fill(16, 6, GetScreenSize().X << 4, 23, BLACK);
-  DOUBLE_BUFFER->Fill(RES.X - 96, RES.Y - 96, 80, 80, BLACK);
+  DOUBLE_BUFFER->Fill(RES_X - 96, RES_Y - 96, 80, 80, BLACK);
   SetDoZoom(false);
   SetCursorPos(vector2d(-1, -1));
   DrawEverythingNoBlit();
