@@ -2,7 +2,12 @@
 #include <algorithm>
 #include <cstdarg>
 
-#if defined(LINUX) || defined(__DJGPP__)
+#ifdef LINUX
+//#include <cstdlib>
+#include <sys/stat.h>
+#endif
+
+#ifdef __DJGPP__
 #include <sys/stat.h>
 #endif
 
@@ -1041,9 +1046,9 @@ bool game::HandleQuitMessage()
 	  }
     }
 
-#endif /* USE_SDL */
-
   return true;
+
+#endif /* USE_SDL */
 }
 
 uchar game::GetDirectionForVector(vector2d Vector)
@@ -1894,3 +1899,4 @@ bool game::ExplosionHandler(long X, long Y)
   Square->GetHitByExplosion(*CurrentExplosion);
   return Square->GetOLTerrain()->IsWalkable();
 }
+
