@@ -182,7 +182,8 @@ int iosystem::Menu(cbitmap* BackGround, v2 Pos,
       else
 	FONT->Printf(&Buffer, v2(XPos, YPos), Color, "%d. %s",
 		     i + 1, VeryUnGuruPrintf.CStr());
-    }
+
+	}
 
     sCopyOfMS = SmallText1;
 
@@ -194,6 +195,7 @@ int iosystem::Menu(cbitmap* BackGround, v2 Pos,
       sCopyOfMS.Erase(0,RPos+1);
       v2 PrintPos(3, RES.Y - CountChars('\r', SmallText1) * 10 + i * 10);
       FONT->Printf(&Buffer, PrintPos, Color, "%s", VeryUnGuruPrintf.CStr());
+
     }
 
     sCopyOfMS = SmallText2;
@@ -229,6 +231,7 @@ int iosystem::Menu(cbitmap* BackGround, v2 Pos,
     }
     else
     {
+		//FONT->Printf(&Buffer, v2(100,100), Color, "%s","NUKES IS HERE!");
       Buffer.FastBlit(DOUBLE_BUFFER);
       graphics::BlitDBToScreen();
       k = GET_KEY(false);

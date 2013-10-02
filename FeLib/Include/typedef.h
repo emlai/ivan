@@ -20,7 +20,7 @@ class festring;
 struct blitdata;
 struct v2;
 
-typedef int truth;
+typedef long truth;
 typedef unsigned char uchar;
 typedef unsigned short ushort;
 typedef unsigned int uint;
@@ -36,7 +36,7 @@ typedef uchar paletteindex;
 
 typedef const char cchar;
 typedef const int cint;
-typedef const int ctruth;
+typedef const long ctruth;
 typedef const unsigned char cuchar;
 typedef const unsigned short cushort;
 typedef const unsigned int cuint;

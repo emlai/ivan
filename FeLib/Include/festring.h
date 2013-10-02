@@ -148,7 +148,7 @@ inline festring::festring(cfestring& Str)
 inline festring::festring(sizetype N)
 : Size(N), OwnsData(true), Reserved(N|FESTRING_PAGE)
 {
-  char* Ptr = 4 + new char[Reserved + 5];
+  char* Ptr = sizeof(int*) + new char[Reserved + sizeof(int*)+1];
   REFS(Ptr) = 0;
   Data = Ptr;
 }
@@ -156,7 +156,7 @@ inline festring::festring(sizetype N)
 inline festring::festring(sizetype N, char C)
 : Size(N), OwnsData(true), Reserved(N|FESTRING_PAGE)
 {
-  char* Ptr = 4 + new char[Reserved + 5];
+  char* Ptr = sizeof(int*) + new char[Reserved + sizeof(int*)+1];
   REFS(Ptr) = 0;
   Data = Ptr;
   memset(Ptr, C, N);
@@ -168,7 +168,7 @@ inline festring::~festring()
   {
     char* Ptr = Data;
 
-    if(Ptr && !REFS(Ptr)--)
+    if(Ptr && !(REFS(Ptr)--))
       delete [] &REFS(Ptr);
   }
 }

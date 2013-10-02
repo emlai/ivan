@@ -562,7 +562,7 @@ ITEM(gasgrenade, materialcontainer)
 {
  protected:
   virtual void AddPostFix(festring& String, int) const { AddContainerPostFix(String); }
-  truth gasgrenade::ReceiveDamage(character* Damager, int Damage, int Type, int);
+  truth ReceiveDamage(character* Damager, int Damage, int Type, int);
 };
 
 ITEM(holyhandgrenade, item)

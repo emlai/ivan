@@ -45,9 +45,9 @@ template <class type>
 inline fearray<type>::fearray(const type* Array, sizetype Size)
 : Size(Size)
 {
-  char* Ptr = new char[Size * sizeof(type) + sizeof(ulong)];
+  char* Ptr = new char[Size * sizeof(type) + sizeof(int*)];
   *reinterpret_cast<ulong*>(Ptr) = 0;
-  Data = reinterpret_cast<type*>(Ptr + sizeof(ulong));
+  Data = reinterpret_cast<type*>(Ptr + sizeof(int*));
 
   for(sizetype c = 0; c < Size; ++c)
     new(&Data[c]) type(Array[c]);

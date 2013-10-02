@@ -176,7 +176,7 @@ int globalwindowhandler::GetKey(truth EmptyBuffer)
 int globalwindowhandler::ReadKey()
 {
   SDL_Event Event;
-
+	memset(&Event,0,sizeof(SDL_Event));
   if(SDL_GetAppState() & SDL_APPACTIVE)
   {
     while(SDL_PollEvent(&Event))

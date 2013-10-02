@@ -2050,7 +2050,8 @@ void cachedfont::PrintCharacter(cblitdata B) const
   for(; SrcLine != EndLine; ++SrcLine, ++SrcMaskLine, ++DestLine)
   {
     culong* FontPtr = reinterpret_cast<culong*>(*SrcLine + B.Src.X);
-    culong* EndPtr = FontPtr + 5;
+	// I don't know how correct this is, but longs are 64 bit on 64 bit.
+    culong* EndPtr = FontPtr + (20/sizeof(ulong));
     culong* MaskPtr = reinterpret_cast<culong*>(*SrcMaskLine + B.Src.X);
     ulong* DestPtr = reinterpret_cast<ulong*>(*DestLine + B.Dest.X);
 

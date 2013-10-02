@@ -11,7 +11,7 @@
  */
 
 #include <cctype>
-
+#include <cstdlib>
 #include "festring.h"
 #include "allocate.h"
 #include "error.h"
@@ -116,7 +116,7 @@ void festring::CreateOwnData(cchar* CStr, sizetype N)
 {
   Size = N;
   Reserved = N|FESTRING_PAGE;
-  char* Ptr = 4 + new char[Reserved + 5];
+  char* Ptr = sizeof(int*) + new char[Reserved + sizeof(int*)+1];
   REFS(Ptr) = 0;
   Data = Ptr;
   memcpy(Ptr, CStr, N);
@@ -137,7 +137,7 @@ void festring::SlowAppend(char Char)
       DeletePtr = &REFS(OldPtr);
 
     Reserved = NewSize|FESTRING_PAGE;
-    char* NewPtr = 4 + new char[Reserved + 5];
+    char* NewPtr = sizeof(int*) + new char[Reserved + sizeof(int*)+1];
     REFS(NewPtr) = 0;
     Data = NewPtr;
     memcpy(NewPtr, OldPtr, OldSize);
@@ -150,7 +150,7 @@ void festring::SlowAppend(char Char)
   {
     Size = 1;
     Reserved = FESTRING_PAGE;
-    char* Ptr = 4 + new char[FESTRING_PAGE + 5];
+    char* Ptr = sizeof(int*) + new char[FESTRING_PAGE + sizeof(int*)+1];
     REFS(Ptr) = 0;
     Ptr[0] = Char;
     Data = Ptr;
@@ -174,7 +174,7 @@ void festring::SlowAppend(cchar* CStr, sizetype N)
       DeletePtr = &REFS(OldPtr);
 
     Reserved = NewSize|FESTRING_PAGE;
-    char* NewPtr = 4 + new char[Reserved + 5];
+    char* NewPtr = sizeof(int*) + new char[Reserved +  sizeof(int*)+1];
     REFS(NewPtr) = 0;
     Data = NewPtr;
     memcpy(NewPtr, OldPtr, OldSize);
@@ -205,7 +205,7 @@ void festring::Assign(sizetype N, char C)
   }
 
   Reserved = N|FESTRING_PAGE;
-  Ptr = 4 + new char[Reserved + 5];
+  Ptr = sizeof(int*) + new char[Reserved + sizeof(int*)+1];
   REFS(Ptr) = 0;
   Data = Ptr;
   memset(Ptr, C, N);
@@ -240,7 +240,7 @@ void festring::Resize(sizetype N, char C)
     }
 
     Reserved = N|FESTRING_PAGE;
-    NewPtr = 4 + new char[Reserved + 5];
+    NewPtr = sizeof(int*) + new char[Reserved + sizeof(int*)+1];
     REFS(NewPtr) = 0;
     Data = NewPtr;
     memcpy(NewPtr, OldPtr, OldSize);
@@ -259,7 +259,7 @@ void festring::Resize(sizetype N, char C)
 	--REFS(OldPtr);
 
     Reserved = N|FESTRING_PAGE;
-    NewPtr = 4 + new char[Reserved + 5];
+    NewPtr = sizeof(int*) + new char[Reserved + sizeof(int*)+1];
     REFS(NewPtr) = 0;
     Data = NewPtr;
     memcpy(NewPtr, OldPtr, N);
@@ -388,7 +388,7 @@ void festring::Erase(sizetype Pos, sizetype Length)
       sizetype NewSize = MoveReq ? OldSize - Length : Pos;
       Size = NewSize;
       Reserved = NewSize|FESTRING_PAGE;
-      char* Ptr = 4 + new char[Reserved + 5];
+      char* Ptr = sizeof(int*) + new char[Reserved + sizeof(int*)+1];
       REFS(Ptr) = 0;
       Data = Ptr;
       OwnsData = true;
@@ -437,7 +437,7 @@ void festring::Insert(sizetype Pos, cchar* CStr, sizetype N)
       }
 
       Reserved = NewSize|FESTRING_PAGE;
-      char* NewPtr = 4 + new char[Reserved + 5];
+      char* NewPtr = sizeof(int*) + new char[Reserved + sizeof(int*)+1];
       REFS(NewPtr) = 0;
       Data = NewPtr;
       memcpy(NewPtr, OldPtr, Pos);
@@ -496,13 +496,14 @@ void festring::DeInstallIntegerMap()
 
 /* Displays numbers in the range [-2147483647, 2147483647].
    Much faster than sprintf and (nonstandard) itoa. */
-
+#include <cstdio>
 festring& festring::Append(long Integer)
 {
   if(!IntegerMap)
     InstallIntegerMap();
-
   char IntegerBuffer[12];
+//   snprintf(IntegerBuffer,12,"%l",&Integer);
+//   return Append(IntegerBuffer,strlen(IntegerBuffer));
   char* BufferPtr = IntegerBuffer;
   truth Negative = false;
 
@@ -565,7 +566,7 @@ festring& festring::Append(long Integer)
   else if(!*BufferPtr) // check if the original Integer was zero
     --BufferPtr;
 
-  return Append(BufferPtr, EndPtr - BufferPtr);
+  return Append(BufferPtr,strlen(BufferPtr));
 }
 
 /* The Result string receives up to Length characters from source,
