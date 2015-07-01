@@ -691,7 +691,7 @@ void rawbitmap::NormalBlit(rawbitmap* Bitmap, v2 Src, v2 Dest, v2 Border, int Fl
 
   switch(Flags & 7)
   {
-   case NONE:
+   case NO_TRANSFORM:
     {
       if(Size.X == Bitmap->Size.X && Size.Y == Bitmap->Size.Y)
 	memcpy(DestBuffer[0], SrcBuffer[0], Size.X * Size.Y * sizeof(paletteindex));

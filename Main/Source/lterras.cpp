@@ -917,7 +917,7 @@ truth stairs::Enter(truth DirectionUp) const
       return true;
     }
 
-  if(GetConfig() == DARK_LEVEL)
+  if(GetConfig() == DARK_LEVEL_PORTAL)
   {
     ADD_MESSAGE("This dark gate seems to be a one-way portal. You sense something distant but extremely dangerous on the other side. You feel you should think twice before entering.");
 
@@ -999,7 +999,7 @@ void olterraincontainer::Load(inputfile& SaveFile)
 
 olterraincontainer::olterraincontainer()
 {
-  Contained = new stack(0, this, HIDDEN);
+  Contained = new stack(0, this, STACK_HIDDEN);
 }
 
 truth olterraincontainer::Open(character* Opener)

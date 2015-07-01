@@ -205,7 +205,7 @@ class lsquare : public square
   truth EngravingsCanBeReadByPlayer();
   truth HasEngravings() const { return truth(Engraved); }
   void FinalProcessForBone();
-  truth IsFreezed() const { return Flags & FREEZED; }
+  truth IsFreezed() const { return Flags & SQUARE_FREEZED; }
   truth IsDangerousToBreathe(ccharacter*) const;
   truth IsScaryToBreathe(ccharacter*) const;
   int GetWalkability() const;
@@ -230,8 +230,8 @@ class lsquare : public square
   const emittervector& GetEmitter() const { return Emitter; }
   void EnableGlobalRain();
   void DisableGlobalRain();
-  void Freeze() { Flags |= FREEZED; }
-  void UnFreeze() { Flags &= ~FREEZED; }
+  void Freeze() { Flags |= SQUARE_FREEZED; }
+  void UnFreeze() { Flags &= ~SQUARE_FREEZED; }
   void InitLastSeen();
   void GetSideItemDescription(festring&, truth = false) const;
   void AddSunLightEmitter(ulong);

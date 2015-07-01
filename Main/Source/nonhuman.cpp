@@ -576,7 +576,7 @@ void genetrixvesana::GetAICommand()
 		else if(RandomValue < 1500)
 		  NewPlant = carnivorousplant::Spawn(GREATER);
 		else
-		  NewPlant = carnivorousplant::Spawn(GIANT);
+		  NewPlant = carnivorousplant::Spawn(GIGANTIC);
 
 		for(int c = 3; c < TurnsExisted / 500; ++c)
 		  NewPlant->EditAllAttributes(1);
@@ -2154,7 +2154,7 @@ void mysticfrog::GetAICommand()
      case 2:
      case 3:
      case 4:
-     case 5: Square->DrawParticles(RED); if(NearestEnemy->TeleportRandomItem(GetConfig() == DARK)) break;
+     case 5: Square->DrawParticles(RED); if(NearestEnemy->TeleportRandomItem(GetConfig() == DARK_MYSTIC)) break;
      case 6:
      case 7:
      case 8:

@@ -22,6 +22,8 @@
 /* Numerical defines for other script files */
 
 #define NONE 0
+
+#define NO_TRANSFORM 0
 #define MIRROR 1
 #define FLIP 2
 #define ROTATE 4
@@ -177,6 +179,7 @@
 #define WHIPS 9
 #define SHIELDS 10
 
+#define UNLOCKED 0
 #define LOCKED 1
 
 #define EFFECT_NOTHING 0
@@ -616,7 +619,7 @@
 #define PATRIARCH 3
 
 #define GREATER 1
-#define GIANT 2
+#define GIGANTIC 2
 
 #define SLAUGHTERER 1
 #define SQUAD_LEADER 2
@@ -693,12 +696,16 @@
 #define TEAK 17
 #define DWARF_BIRCH 18
 
+#define BOULDER_1 1
+#define BOULDER_2 2
+#define BOULDER_3 3
 #define SNOW_BOULDER 4
 
 #define STAIRS_UP 100
 #define STAIRS_DOWN 200
 #define OREE_LAIR_ENTRY 300
 #define OREE_LAIR_EXIT 400
+#define DARK_LEVEL_PORTAL 8
 #define SUMO_ARENA_ENTRY 700
 #define SUMO_ARENA_EXIT 800
 #define FOUNTAIN 65535
@@ -722,6 +729,8 @@
 #define MONSTER_TEAM 1
 #define ATTNAM_TEAM 2
 #define SUMO_TEAM 3
+#define HOSTILE_ANGEL_TEAM 4
+#define DUNGEON_SHOP_TEAM 5
 #define IVAN_TEAM 6
 #define NEW_ATTNAM_TEAM 7
 #define COLONIST_TEAM 8

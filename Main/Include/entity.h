@@ -17,8 +17,8 @@
 
 #include "ivandef.h"
 
-#define EXISTS 1
-#define HAS_BE 2
+enum entityflag { EXISTS = 1, HAS_BE = 2 };
+
 #define ENTITY_FLAGS 3
 
 class square;

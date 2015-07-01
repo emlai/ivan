@@ -77,7 +77,7 @@ void stack::AddItem(item* ToBeAdded, truth RunRoomEffects)
 
   AddElement(ToBeAdded);
 
-  if(Flags & HIDDEN)
+  if(Flags & STACK_HIDDEN)
     return;
 
   lsquare* SquareUnder = GetLSquareTrulyUnder(ToBeAdded->GetSquarePosition());
@@ -107,7 +107,7 @@ void stack::RemoveItem(stackslot* Slot)
   SignalVolumeAndWeightChange();
   SignalEmitationDecrease(Item->GetSquarePosition(), Emit);
 
-  if(Flags & HIDDEN)
+  if(Flags & STACK_HIDDEN)
     return;
 
   lsquare* SquareUnder = GetLSquareTrulyUnder(Item->GetSquarePosition());
@@ -149,7 +149,7 @@ void stack::Clean(truth LastClean)
   {
     item* Item = Slot->GetItem();
 
-    if(!(Flags & HIDDEN) && Item->IsAnimated() && !LastClean)
+    if(!(Flags & STACK_HIDDEN) && Item->IsAnimated() && !LastClean)
     {
       lsquare* Square = GetLSquareTrulyUnder(Item->GetSquarePosition());
 
@@ -360,7 +360,7 @@ void stack::FillItemVectorSorted(itemvector& ItemVector, ccharacter* Viewer,
 
   for(stackiterator i = GetBottom(); i.HasItem(); ++i)
     if((SorterFunction == 0 || ((*i)->*SorterFunction)(Viewer))
-       && ((Flags & HIDDEN) || i->CanBeSeenBy(Viewer)))
+       && ((Flags & STACK_HIDDEN) || i->CanBeSeenBy(Viewer)))
     {
       ItemVector.push_back(*i);
 
@@ -431,7 +431,7 @@ int stack::DrawContents(itemvector& ReturnVector, stack* MergeStack,
   stack* AdjacentStack[4] = { 0, 0, 0, 0 };
   int c;
 
-  if(!(this->Flags & HIDDEN))
+  if(!(this->Flags & STACK_HIDDEN))
     for(c = 0; c < 4; ++c)
       AdjacentStack[c] = Square->GetStackOfAdjacentSquare(c);
 
@@ -714,7 +714,7 @@ int stack::GetVisibleItems(ccharacter* Viewer) const
 
 int stack::GetNativeVisibleItems(ccharacter* Viewer) const
 {
-  if(Flags & HIDDEN)
+  if(Flags & STACK_HIDDEN)
     return Items;
 
   int VisibleItems = 0;
@@ -742,7 +742,7 @@ int stack::GetVisibleSideItems(ccharacter* Viewer,
 item* stack::GetBottomVisibleItem(ccharacter* Viewer) const
 {
   for(stackiterator i = GetBottom(); i.HasItem(); ++i)
-    if((Flags & HIDDEN) || i->CanBeSeenBy(Viewer))
+    if((Flags & STACK_HIDDEN) || i->CanBeSeenBy(Viewer))
       return *i;
 
   return 0;
@@ -750,7 +750,7 @@ item* stack::GetBottomVisibleItem(ccharacter* Viewer) const
 
 void stack::SignalVolumeAndWeightChange()
 {
-  if(!(Flags & FREEZED))
+  if(!(Flags & STACK_FREEZED))
   {
     CalculateVolumeAndWeight();
 
@@ -784,7 +784,7 @@ void stack::SignalEmitationIncrease(int ItemSquarePosition,
     return;
   }
 
-  if(!(Flags & FREEZED) && game::CompareLights(EmitationUpdate, Emitation) > 0)
+  if(!(Flags & STACK_FREEZED) && game::CompareLights(EmitationUpdate, Emitation) > 0)
   {
     Emitation = game::CombineConstLights(Emitation, EmitationUpdate);
 
@@ -812,7 +812,7 @@ void stack::SignalEmitationDecrease(int ItemSquarePosition,
     return;
   }
 
-  if(!(Flags & FREEZED) && Emitation
+  if(!(Flags & STACK_FREEZED) && Emitation
      && game::CompareLights(EmitationUpdate, Emitation) >= 0)
   {
     col24 Backup = Emitation;
@@ -924,7 +924,7 @@ void stack::MoveItemsTo(slot* Slot)
 item* stack::GetBottomItem(ccharacter* Char,
 			   truth ForceIgnoreVisibility) const
 {
-  if((Flags & HIDDEN) || ForceIgnoreVisibility)
+  if((Flags & STACK_HIDDEN) || ForceIgnoreVisibility)
     return Bottom ? **Bottom : 0;
   else
     return GetBottomVisibleItem(Char);
@@ -936,7 +936,7 @@ item* stack::GetBottomSideItem(ccharacter* Char,
 {
   for(stackiterator i = GetBottom(); i.HasItem(); ++i)
     if((i->GetSquarePosition() == RequiredSquarePosition
-       && (Flags & HIDDEN)) || ForceIgnoreVisibility || i->CanBeSeenBy(Char))
+       && (Flags & STACK_HIDDEN)) || ForceIgnoreVisibility || i->CanBeSeenBy(Char))
       return *i;
 
   return 0;
@@ -962,7 +962,7 @@ void stack::Pile(itemvectorvector& PileVector, ccharacter* Viewer,
   for(stackiterator s = GetBottom(); s.HasItem(); ++s)
     if(s->GetSquarePosition() == RequiredSquarePosition
        && (SorterFunction == 0 || ((*s)->*SorterFunction)(Viewer))
-       && ((Flags & HIDDEN) || s->CanBeSeenBy(Viewer)))
+       && ((Flags & STACK_HIDDEN) || s->CanBeSeenBy(Viewer)))
       List.push_back(*s);
 
   for(std::list<item*>::iterator i = List.begin(); i != List.end(); ++i)
@@ -1299,7 +1299,7 @@ long stack::GetWeight(ccharacter* Viewer, int SquarePosition) const
 
   for(stackiterator i = GetBottom(); i.HasItem(); ++i)
     if(i->GetSquarePosition() == SquarePosition
-       && ((Flags & HIDDEN) || i->CanBeSeenBy(Viewer)))
+       && ((Flags & STACK_HIDDEN) || i->CanBeSeenBy(Viewer)))
       Weight += i->GetWeight();
 
   return Weight;

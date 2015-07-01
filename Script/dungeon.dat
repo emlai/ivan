@@ -30,6 +30,9 @@ Teams = 12;
  * 1 == MONSTER_TEAM == Monsters, default relation to other teams == hostile
  * 2 == ATTNAM_TEAM == Residents of Attnam
  * 3 == SUMO_TEAM == Huang Ming Pong during an arena figth
+ * 4 == HOSTILE_ANGEL_TEAM == Spawned hostile angels
+ * 5 == DUNGEON_SHOP_TEAM == Dungeon shopkeepers
+ * 6 == IVAN_TEAM == Ivan and Vladimir
  * 7 == NEW_ATTNAM_TEAM == natives and ostriches of New Attnam
  * 8 == COLONIST_TEAM == colonists of New Attnam
  * 9 == TOURIST_GUIDE_TEAM == dummy team which holds the village elder, who tourists follow
@@ -48,13 +51,13 @@ Team SUMO_TEAM;
   Relation 0, HOSTILE;
 }
 
-Team 4; /* Spawned hostile angels */
+Team HOSTILE_ANGEL_TEAM;
 {
   Relation 0, HOSTILE;
   Relation 1, UNCARING;
 }
 
-Team 5; /* Dungeon shopkeepers */
+Team DUNGEON_SHOP_TEAM;
 {
   Relation 1, UNCARING;
   KillEvilness = 100;
@@ -762,7 +765,7 @@ Dungeon ELPURI_CAVE;
 
       Square, Pos 5, 5;
       {
-        OTerrain = portal(DARK_LEVEL) { AttachedArea = DARK_LEVEL + 1; AttachedEntry = STAIRS_UP; }
+        OTerrain = portal(DARK_LEVEL_PORTAL) { AttachedArea = DARK_LEVEL + 1; AttachedEntry = STAIRS_UP; }
         Character = elpuri;
       }
 

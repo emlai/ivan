@@ -106,7 +106,7 @@ lsquare::~lsquare()
 
 void lsquare::SignalEmitationIncrease(col24 EmitationUpdate)
 {
-  if(game::CompareLights(EmitationUpdate, Emitation) > 0 && !game::IsGenerating() && !(Flags & FREEZED))
+  if(game::CompareLights(EmitationUpdate, Emitation) > 0 && !game::IsGenerating() && !(Flags & SQUARE_FREEZED))
   {
     CalculateEmitation(); // could this be optimized?
     Emitate();
@@ -115,7 +115,7 @@ void lsquare::SignalEmitationIncrease(col24 EmitationUpdate)
 
 void lsquare::SignalEmitationDecrease(col24 EmitationUpdate)
 {
-  if(game::CompareLights(EmitationUpdate, Emitation) >= 0 && Emitation && !game::IsGenerating() && !(Flags & FREEZED))
+  if(game::CompareLights(EmitationUpdate, Emitation) >= 0 && Emitation && !game::IsGenerating() && !(Flags & SQUARE_FREEZED))
   {
     col24 Backup = Emitation;
     CalculateEmitation();
@@ -1341,7 +1341,7 @@ stack* lsquare::GetStackOfAdjacentSquare(int I) const
 
 void lsquare::SendMemorizedUpdateRequest()
 {
-  if(!(Flags & FREEZED))
+  if(!(Flags & SQUARE_FREEZED))
   {
     Flags |= MEMORIZED_UPDATE_REQUEST|DESCRIPTION_CHANGE;
 

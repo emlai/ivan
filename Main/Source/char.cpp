@@ -403,7 +403,7 @@ character::character(ccharacter& Char)
 {
   Flags &= ~C_PLAYER;
   Flags |= C_INITIALIZING|C_IN_NO_MSG_MODE;
-  Stack = new stack(0, this, HIDDEN);
+  Stack = new stack(0, this, STACK_HIDDEN);
 
   int c;
 
@@ -455,7 +455,7 @@ character::character()
   BlocksSinceLastTurn(0), GenerationDanger(DEFAULT_GENERATION_DANGER),
   WarnFlags(0), ScienceTalks(0), TrapData(0), CounterToMindWormHatch(0)
 {
-  Stack = new stack(0, this, HIDDEN);
+  Stack = new stack(0, this, STACK_HIDDEN);
 }
 
 character::~character()
@@ -1641,7 +1641,7 @@ void character::AddWeaponHitMessage(ccharacter* Enemy, citem* Weapon, int BodyPa
   int DamageFlags = Weapon->GetDamageFlags();
   int DamageType = 0;
 
-  for(int c = 0; c < DAMAGE_TYPES; ++c)
+  for(int c = 0; c < PHYSICAL_DAMAGE_TYPES; ++c)
     if(1 << c & DamageFlags)
     {
       if(!FittingTypes || !RAND_N(FittingTypes + 1))

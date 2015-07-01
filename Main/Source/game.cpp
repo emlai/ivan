@@ -53,9 +53,7 @@
 #define SAVE_FILE_VERSION 123 // Increment this if changes make savefiles incompatible
 #define BONE_FILE_VERSION 109 // Increment this if changes make bonefiles incompatible
 
-#define LOADED 0
-#define NEW_GAME 1
-#define BACK 2
+enum loadresult { LOADED, NEW_GAME, BACK };
 
 int game::CurrentLevelIndex;
 truth game::InWilderness = false;

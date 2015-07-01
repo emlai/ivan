@@ -89,7 +89,7 @@ inline col16 GetRed16(col16 Color) { return Color >> 8 & 0xF8; }
 inline col16 GetGreen16(col16 Color) { return Color >> 3 & 0xFC; }
 inline col16 GetBlue16(col16 Color) { return Color << 3 & 0xF8; }
 
-inline col16 MakeRGB16(int Red, int Green, int Blue)
+constexpr inline col16 MakeRGB16(int Red, int Green, int Blue)
 {
   return (Red << 8 & 0xF800) | (Green << 3 & 0x7E0) | (Blue >> 3 & 0x1F);
 }
@@ -120,59 +120,72 @@ inline int GetMinColor24(col24 Color)
   return Min(GetRed24(Color), GetGreen24(Color), GetBlue24(Color));
 }
 
-#define NONE 0
-#define MIRROR 1
-#define FLIP 2
-#define ROTATE 4
+enum transformflag
+{
+  NO_TRANSFORM = 0,
+  MIRROR = 1,
+  FLIP = 2,
+  ROTATE = 4
+};
 
-#define TRANSPARENT_COLOR 0xF81F
+enum color : col16
+{
+  TRANSPARENT_COLOR = 0xF81F, // pink
 
-#define RED 0xF800
-#define GREEN 0x07E0
-#define BLUE 0x001F
+  RED = 0xF800,
+  GREEN = 0x07E0,
+  BLUE = 0x001F,
 
-#define YELLOW 0xFFE0
-#define PINK 0xF01E
+  YELLOW = 0xFFE0,
+  PINK = 0xF01E,
 
-#define WHITE 0xFFFF
-#define LIGHT_GRAY 0x94B2
-#define DARK_GRAY 0x528A
-#define BLACK 0x0000
+  WHITE = 0xFFFF,
+  LIGHT_GRAY = 0x94B2,
+  DARK_GRAY = 0x528A,
+  BLACK = 0x0000
+};
 
 #define NORMAL_LUMINANCE 0x808080
 
+enum keycode
+{
 #if SDL_MAJOR_VERSION == 2 || !defined(__APPLE__)
-#define KEY_BACK_SPACE 0x08
+  KEY_BACK_SPACE = 0x08,
 #else
-#define KEY_BACK_SPACE 0x7F
+  KEY_BACK_SPACE = 0x7F,
 #endif
-#define KEY_ESC 0x1B
-#define KEY_ENTER 0x0D
-#define KEY_UP 0x148
-#define KEY_DOWN 0x150
-#define KEY_RIGHT 0x14D
-#define KEY_LEFT 0x14B
-#define KEY_HOME 0x147
-#define KEY_END 0x14F
-#define KEY_PAGE_DOWN 0x151
-#define KEY_PAGE_UP 0x149
-#define KEY_SPACE ' '
-#define KEY_NUMPAD_5 2
+  KEY_ESC = 0x1B,
+  KEY_ENTER = 0x0D,
+  KEY_UP = 0x148,
+  KEY_DOWN = 0x150,
+  KEY_RIGHT = 0x14D,
+  KEY_LEFT = 0x14B,
+  KEY_HOME = 0x147,
+  KEY_END = 0x14F,
+  KEY_PAGE_DOWN = 0x151,
+  KEY_PAGE_UP = 0x149,
+  KEY_SPACE = ' ',
+  KEY_NUMPAD_5 = 2
+};
 
 #define NO_FLAME 0xFFFF
 
-#define SELECTABLE 1
-#define INVERSE_MODE 2
-#define BLIT_AFTERWARDS 4
-#define DRAW_BACKGROUND_AFTERWARDS 8
-#define FADE 16
+enum felistflag
+{
+  SELECTABLE = 1,
+  INVERSE_MODE = 2,
+  BLIT_AFTERWARDS = 4,
+  DRAW_BACKGROUND_AFTERWARDS = 8,
+  FADE = 16
+};
 
-/* felist errors */
-
-#define FELIST_ERROR_BIT 0x8000
-#define LIST_WAS_EMPTY 0xFFFF
-#define ESCAPED 0xFFFE
-#define NOTHING_SELECTED 0xFFFD
+enum felisterror
+{
+  FELIST_ERROR_BIT = 0x8000,
+  LIST_WAS_EMPTY = 0xFFFF,
+  ESCAPED = 0xFFFE,
+  NOTHING_SELECTED = 0xFFFD
+};
 
 #define NO_LIMIT 0xFFFF
 
@@ -180,25 +193,37 @@ inline int GetMinColor24(col24 Color)
 
 #define HIGHEST 0xFF
 
-#define NORMAL_EXIT 0
-#define ABORTED 1
+enum feioexitcode
+{
+  NORMAL_EXIT,
+  ABORTED
+};
 
 #define MAX_CONFIG_OPTIONS 0x100
 
-#define FLY_PRIORITY ((10 << 4) + 10)
-#define SPARKLE_PRIORITY ((12 << 4) + 12)
-#define LIGHTNING_PRIORITY ((14 << 4) + 14)
-#define AVERAGE_PRIORITY ((8 << 4) + 8)
+enum priorityconstant
+{
+  FLY_PRIORITY = (10 << 4) + 10,
+  SPARKLE_PRIORITY = (12 << 4) + 12,
+  LIGHTNING_PRIORITY = (14 << 4) + 14,
+  AVERAGE_PRIORITY = (8 << 4) + 8
+};
 
 #define NO_IMAGE 0xFFFF
 
-#define ZERO_POOLS 1
-#define RAND_ALLOC 2
+enum
+{
+  ZERO_POOLS = 1,
+  RAND_ALLOC = 2
+};
 
 #define REFS(ptr) reinterpret_cast<ulong*>(ptr)[-1]
 
-#define SKIP_FIRST 1
-#define ALLOW_END_FAILURE 2
+enum mapmathflag
+{
+  SKIP_FIRST = 1,
+  ALLOW_END_FAILURE = 2
+};
 
 #define MAX_RAND 0x7FFFFFFF
 
@@ -206,17 +231,19 @@ inline int GetMinColor24(col24 Color)
 
 #define MAX_HIGHSCORES 100
 
-/* sparkling flags */
+enum sparkleflag
+{
+  SPARKLING_A = 1,
+  SPARKLING_B = 2,
+  SPARKLING_C = 4,
+  SPARKLING_D = 8
+};
 
-#define SPARKLING_A 1
-#define SPARKLING_B 2
-#define SPARKLING_C 4
-#define SPARKLING_D 8
-
-/* For control schemes: */
-
-#define DIR_NORM 0
-#define DIR_ALT  1
-#define DIR_HACK 2
+enum controlscheme
+{
+  DIR_NORM = 0,
+  DIR_ALT = 1,
+  DIR_HACK = 2
+};
 
 #endif

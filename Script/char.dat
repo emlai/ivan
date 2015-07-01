@@ -3429,7 +3429,7 @@ carnivorousplant
     TotalSize = 175;
   }
 
-  Config GIANT;
+  Config GIGANTIC;
   {
     AttributeBonus = 250;
     TorsoBitmapPos = 80, 16;

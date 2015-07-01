@@ -57,11 +57,8 @@ festring inputfile::ReadWord(truth AbortOnEOF)
   return ToReturn;
 }
 
-#define MODE_WORD 1
-#define MODE_NUMBER 2
-
-#define PUNCT_RETURN 0
-#define PUNCT_CONTINUE 1
+enum mode { MODE_WORD = 1, MODE_NUMBER = 2 };
+enum punct { PUNCT_RETURN = 0, PUNCT_CONTINUE = 1 };
 
 int inputfile::HandlePunct(festring& String, int Char, int Mode)
 {

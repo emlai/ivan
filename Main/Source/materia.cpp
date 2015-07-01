@@ -429,7 +429,7 @@ int material::GetHardenedMaterial(citem* Item) const
   if(!Item->FlexibilityIsEssential())
     return DB->HardenedMaterial;
 
-  while(DB->HardenedMaterial != NONE)
+  while(DB->HardenedMaterial != NO_MATERIAL)
   {
     DB = material::GetDataBase(DB->HardenedMaterial);
 

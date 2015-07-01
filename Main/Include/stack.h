@@ -132,7 +132,7 @@ class stack
   static void SetSelected(int What) { Selected = What; }
   truth TakeSomethingFrom(character*, cfestring&);
   truth PutSomethingIn(character*, cfestring&, long, ulong);
-  truth IsVisible() const { return !(Flags & HIDDEN); }
+  truth IsVisible() const { return !(Flags & STACK_HIDDEN); }
   int GetSpoiledItems() const;
   void SortAllItems(const sortdata&) const;
   void Search(ccharacter*, int);
@@ -144,8 +144,8 @@ class stack
   void SpillFluid(character*, liquid*, long);
   void AddItems(const itemvector&);
   void MoveItemsTo(itemvector&, int);
-  void Freeze() { Flags |= FREEZED; }
-  void UnFreeze() { Flags &= ~FREEZED; }
+  void Freeze() { Flags |= STACK_FREEZED; }
+  void UnFreeze() { Flags &= ~STACK_FREEZED; }
   void DropSideItems();
   truth DetectMaterial(cmaterial*) const;
   void SetLifeExpectancy(int, int);

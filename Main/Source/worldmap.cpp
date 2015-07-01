@@ -16,10 +16,13 @@
 #define LATITUDE_EFFECT	  40		//increase for more effect
 #define ALTITUDE_EFFECT	  0.02
 
-#define COLD		  10
-#define MEDIUM		  12
-#define WARM		  17
-#define HOT		  19
+enum temperaturelimit
+{
+  COLD = 10,
+  MEDIUM = 12,
+  WARM = 17,
+  HOT = 19
+};
 
 int DirX[8] = { -1, -1, -1, 0, 0, 1, 1, 1 };
 int DirY[8] = { -1, 0, 1, -1, 1, -1, 0, 1 };

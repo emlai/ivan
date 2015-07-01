@@ -359,7 +359,7 @@ void bitmap::NormalBlit(cblitdata& BlitData) const
 
   switch(B.Flags & 7)
   {
-   case NONE:
+   case NO_TRANSFORM:
     {
       if(!B.Src.X && !B.Src.Y && !B.Dest.X && !B.Dest.Y
 	 && B.Border.X == Size.X && B.Border.Y == Size.Y
@@ -565,7 +565,7 @@ void bitmap::NormalMaskedBlit(cblitdata& BlitData) const
 
   switch(B.Flags & 7)
   {
-   case NONE:
+   case NO_TRANSFORM:
     {
       for(int y = 0; y < B.Border.Y; ++y)
       {
@@ -1592,7 +1592,7 @@ void bitmap::BlitAndCopyAlpha(bitmap* Bitmap, int Flags) const
 
   switch(Flags & 7)
   {
-   case NONE:
+   case NO_TRANSFORM:
     {
       memcpy(DestImage[0], SrcImage[0], XSizeTimesYSize * sizeof(packcol16));
       memcpy(DestAlphaMap[0], SrcAlphaMap[0], XSizeTimesYSize * sizeof(packalpha));

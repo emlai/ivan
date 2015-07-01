@@ -23,7 +23,7 @@ owterrainprototype::owterrainprototype(owterrainspawner Spawner,
 
 int gwterrain::GetWalkability() const { return ANY_MOVE&~SWIM; }
 int owterrain::GetWalkability() const { return ANY_MOVE; }
-int owterrain::GetAttachedEntry() const { return STAIRS_UP; }
+int owterrain::GetAttachedEntry() const { return UPSTAIRS; }
 
 void wterrain::AddName(festring& String, int Case) const
 {

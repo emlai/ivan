@@ -12,12 +12,15 @@
 
 /* Compiled through levelset.cpp */
 
-#define FORBIDDEN 1
-#define ON_POSSIBLE_ROUTE 2
-#define STILL_ON_POSSIBLE_ROUTE 4
-#define PREFERRED 8
-#define ICE_TERRAIN 16
-#define STONE_TERRAIN 32
+enum levelflag
+{
+  FORBIDDEN = 1,
+  ON_POSSIBLE_ROUTE = 2,
+  STILL_ON_POSSIBLE_ROUTE = 4,
+  PREFERRED = 8,
+  ICE_TERRAIN = 16,
+  STONE_TERRAIN = 32
+};
 
 level::level() : Room(1, static_cast<room*>(0)), GlobalRainLiquid(0), SunLightEmitation(0), AmbientLuminance(0), SquareStack(0), NightAmbientLuminance(0) { }
 void level::SetRoom(int I, room* What) { Room[I] = What; }

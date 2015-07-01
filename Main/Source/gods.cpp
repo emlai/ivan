@@ -12,14 +12,17 @@
 
 /* Compiled through godset.cpp */
 
-#define LAWFUL_BASIC_COLOR MakeRGB16(160, 160, 0)
-#define LAWFUL_ELITE_COLOR MakeRGB16(220, 220, 220)
+enum divinecolor
+{
+  LAWFUL_BASIC_COLOR = MakeRGB16(160, 160, 0),
+  LAWFUL_ELITE_COLOR = MakeRGB16(220, 220, 220),
 
-#define NEUTRAL_BASIC_COLOR MakeRGB16(20, 120, 200)
-#define NEUTRAL_ELITE_COLOR MakeRGB16(120, 120, 120)
+  NEUTRAL_BASIC_COLOR = MakeRGB16(20, 120, 200),
+  NEUTRAL_ELITE_COLOR = MakeRGB16(120, 120, 120),
 
-#define CHAOS_BASIC_COLOR MakeRGB16(200, 0, 0)
-#define CHAOS_ELITE_COLOR MakeRGB16(40, 40, 40)
+  CHAOS_BASIC_COLOR = MakeRGB16(200, 0, 0),
+  CHAOS_ELITE_COLOR = MakeRGB16(40, 40, 40)
+};
 
 cchar* valpurus::GetName() const { return "Valpurus"; }
 cchar* valpurus::GetDescription() const { return "King of Gods"; }

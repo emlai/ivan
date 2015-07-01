@@ -928,7 +928,7 @@ void magicalwhistle::BlowEffect(character* Whistler)
 
 itemcontainer::itemcontainer()
 {
-  Contained = new stack(0, this, HIDDEN);
+  Contained = new stack(0, this, STACK_HIDDEN);
 }
 
 void itemcontainer::PostConstruct()
@@ -1342,7 +1342,7 @@ materialcontainer::materialcontainer(const materialcontainer& MC) : mybase(MC)
 
 itemcontainer::itemcontainer(const itemcontainer& Container) : mybase(Container)
 {
-  Contained = new stack(0, this, HIDDEN);
+  Contained = new stack(0, this, STACK_HIDDEN);
   CalculateAll();
 }
 
