@@ -37,7 +37,7 @@
 #include "festring.h"
 #include "bitmap.h"
 
-#define PENT_WIDTH 70
+cint PENT_WIDTH = 70;
 
 /* Prints screen full of Text in color Color. If GKey is true function
    waits for keypress. BitmapEditor is a pointer to function that is

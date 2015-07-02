@@ -50,8 +50,8 @@
 #include "balance.h"
 #include "confdef.h"
 
-#define SAVE_FILE_VERSION 123 // Increment this if changes make savefiles incompatible
-#define BONE_FILE_VERSION 109 // Increment this if changes make bonefiles incompatible
+cint SAVE_FILE_VERSION = 123; // Increment this if changes make savefiles incompatible
+cint BONE_FILE_VERSION = 109; // Increment this if changes make bonefiles incompatible
 
 enum loadresult { LOADED, NEW_GAME, BACK };
 

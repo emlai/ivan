@@ -18,7 +18,7 @@
 #define ABORT globalerrorhandler::Abort
 
 #ifdef __DJGPP__
-#define SIGNALS 8
+cint SIGNALS = 8;
 #endif
 
 class globalerrorhandler

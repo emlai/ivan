@@ -35,12 +35,15 @@ typedef uchar packpriority;
 typedef uchar paletteindex;
 
 typedef const char cchar;
+typedef const short cshort;
 typedef const int cint;
+typedef const long clong;
 typedef const long ctruth;
 typedef const unsigned char cuchar;
 typedef const unsigned short cushort;
 typedef const unsigned int cuint;
 typedef const unsigned long culong;
+typedef const double cdouble;
 typedef const int ccol16;
 typedef const ushort cpackcol16;
 typedef const ulong ccol24;

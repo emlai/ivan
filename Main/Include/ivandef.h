@@ -136,7 +136,7 @@ enum hungerstate
   OVER_FED = 6
 };
 
-#define STATES 21
+cint STATES = 21;
 
 enum state : long
 {
@@ -202,12 +202,12 @@ enum sex
   TRANSSEXUAL = 3
 };
 
-#define ALL_BODYPART_FLAGS 0x7F
+culong ALL_BODYPART_FLAGS = 0x7F;
 
 /* The maximum bodyparts a character can have */
 
-#define MAX_BODYPARTS 7
-#define HUMANOID_BODYPARTS 7
+cint MAX_BODYPARTS = 7;
+cint HUMANOID_BODYPARTS = 7;
 
 enum bodypartindex
 {
@@ -221,8 +221,8 @@ enum bodypartindex
   NONE_INDEX = MAX_BODYPARTS
 };
 
-#define DIRECTION_COMMAND_KEYS 8
-#define EXTENDED_DIRECTION_COMMAND_KEYS 9
+cint DIRECTION_COMMAND_KEYS = 8;
+cint EXTENDED_DIRECTION_COMMAND_KEYS = 9;
 
 enum direction
 {
@@ -269,7 +269,7 @@ enum caseflag
   STRIPPED = 8
 };
 
-#define RAW_TYPES 7
+cint RAW_TYPES = 7;
 
 enum rawtype
 {
@@ -282,7 +282,7 @@ enum rawtype
   GR_CURSOR = 6
 };
 
-#define GRAPHIC_TYPES 4
+cint GRAPHIC_TYPES = 4;
 
 enum graphictype
 {
@@ -329,7 +329,7 @@ enum wobbleflag
 
 cv2 SILHOUETTE_SIZE(48, 64);
 
-#define ITEM_CATEGORIES 18
+cint ITEM_CATEGORIES = 18;
 
 enum itemcategory
 {
@@ -394,8 +394,8 @@ enum relation
   FRIEND = 4
 };
 
-#define MARTIAL_SKILL_CATEGORIES 3
-#define WEAPON_SKILL_CATEGORIES 11
+cint MARTIAL_SKILL_CATEGORIES = 3;
+cint WEAPON_SKILL_CATEGORIES = 11;
 
 enum skillcategory
 {
@@ -506,8 +506,8 @@ enum attackstyle
   USE_HEAD = 4
 };
 
-#define ATTRIBUTES 11
-#define BASE_ATTRIBUTES 7
+cint ATTRIBUTES = 11;
+cint BASE_ATTRIBUTES = 7;
 
 enum attribute
 {
@@ -547,9 +547,9 @@ enum truthanswer
   YES = 1
 };
 
-#define REQUIRES_ANSWER -1
+cint REQUIRES_ANSWER = -1;
 
-#define MAX_EQUIPMENT_SLOTS 13
+cint MAX_EQUIPMENT_SLOTS = 13;
 
 enum equipmentindex
 {
@@ -568,9 +568,9 @@ enum equipmentindex
   LEFT_BOOT_INDEX = 12
 };
 
-#define WORLD_MAP 255
+cint WORLD_MAP = 255;
 
-#define DEFAULT_TEAM 0xFF
+cuchar DEFAULT_TEAM = 0xFF;
 
 /* Hard-coded teams */
 
@@ -660,7 +660,7 @@ enum roomshape
   ROUND_CORNERS = 2,
 };
 
-#define GODS 15
+cint GODS = 15;
 
 enum godid
 {
@@ -683,9 +683,9 @@ enum godid
   ATHEIST = 16
 };
 
-#define MAX_PRICE 2147483647L
+clong MAX_PRICE = 2147483647L;
 
-#define PERMANENT 0xFFFF
+cint PERMANENT = 0xFFFF;
 
 enum hitresult
 {
@@ -694,7 +694,7 @@ enum hitresult
   CATCHED = 2
 };
 
-#define BEAM_EFFECTS 13
+cint BEAM_EFFECTS = 13;
 
 enum beameffect
 {
@@ -713,7 +713,7 @@ enum beameffect
   BEAM_NECROMANCY = 12
 };
 
-#define BEAM_STYLES 3
+cint BEAM_STYLES = 3;
 
 enum beamstyle
 {
@@ -722,7 +722,7 @@ enum beamstyle
   SHIELD_BEAM = 2
 };
 
-#define RANDOM_COLOR 0x10000
+clong RANDOM_COLOR = 0x10000;
 
 /* Entry indices, not actual config defines */
 
@@ -733,7 +733,7 @@ enum entryindex
   FOUNTAIN = 0xFFFF
 };
 
-#define ALL_ITEMS 0xFFFF
+cint ALL_ITEMS = 0xFFFF;
 
 enum statedataflag
 {
@@ -759,7 +759,7 @@ enum mapcheatmode
   SHOW_MAP_IN_UNIFORM_LIGHT = 2
 };
 
-#define DIM_LUMINANCE 0x6E6E6E
+ccol24 DIM_LUMINANCE = 0x6E6E6E;
 
 enum configmodifier
 {
@@ -788,8 +788,8 @@ enum configflag
   IGNORE_BROKEN_PRICE = 2
 };
 
-#define MAX_SQUARES_UNDER 16
-#define MAX_NEIGHBOUR_SQUARES 20
+cint MAX_SQUARES_UNDER = 16;
+cint MAX_NEIGHBOUR_SQUARES = 20;
 
 enum lockconstant
 {
@@ -798,9 +798,9 @@ enum lockconstant
   LOCK_DELTA = 1024
 };
 
-#define LOCK_BITS 0xFC00
+cint LOCK_BITS = 0xFC00;
 
-#define BROKEN_LOCK S_LOCK_ID
+cint BROKEN_LOCK = S_LOCK_ID;
 
 enum locktype
 {
@@ -876,17 +876,17 @@ enum burnlevel
   HEAVILY_BURNT = 3
 };
 
-#define HUMAN_BODY_ARMOR_PIXELS 68
+cint HUMAN_BODY_ARMOR_PIXELS = 68;
 
-#define ARMOR_OUTLINE_PRIORITY ((7 << 4) + 7)
-#define CLOAK_PRIORITY ((8 << 4) + 7)
+cpriority ARMOR_OUTLINE_PRIORITY = (7 << 4) + 7;
+cpriority CLOAK_PRIORITY = (8 << 4) + 7;
 
-#define BODY_ARMOR_PARTS 6
+cint BODY_ARMOR_PARTS = 6;
 
-#define SUMO_ROOM_POS v2(25, 35)
-#define SUMO_ARENA_POS v2(19, 12)
+cv2 SUMO_ROOM_POS(25, 35);
+cv2 SUMO_ARENA_POS(19, 12);
 
-#define MAX_RAIN_DROPS 32
+cint MAX_RAIN_DROPS = 32;
 
 enum contestresult
 {
@@ -930,11 +930,11 @@ enum squaregraphicflag
 /* Slows down protosystem::BalancedCreateItem() but makes it produce more
    accurate results */
 
-#define BALANCED_CREATE_ITEM_ITERATIONS 100
+cint BALANCED_CREATE_ITEM_ITERATIONS = 100;
 
-#define CONFIG_TABLE_SIZE 256
+cint CONFIG_TABLE_SIZE = 256;
 
-#define SPARKLE_POS_X_ERROR 128
+cint SPARKLE_POS_X_ERROR = 128;
 
 enum bodypartcolorflag
 {
@@ -979,7 +979,7 @@ enum stackflag
   STACK_FREEZED = 2
 };
 
-#define SUN_BEAM_DIRECTIONS 48
+cint SUN_BEAM_DIRECTIONS = 48;
 
 enum squarepartflag
 {
@@ -993,14 +993,14 @@ enum squarepartflag
   SP_BOTTOM = SP_BOTTOM_LEFT|SP_BOTTOM_RIGHT
 };
 
-#define CONDITION_COLORS 5
+cint CONDITION_COLORS = 5;
 
-#define NATURAL_MATERIAL_FORM 0x7FFF
+cushort NATURAL_MATERIAL_FORM = 0x7FFF;
 
-#define EXP_DIVISOR 2e-8
-#define EXP_MULTIPLIER 5e+7
-#define MIN_EXP 5e+7
-#define MAX_EXP 5e+10
+cdouble EXP_DIVISOR = 2e-8;
+cdouble EXP_MULTIPLIER = 5e+7;
+cdouble MIN_EXP = 5e+7;
+cdouble MAX_EXP = 5e+10;
 
 enum characterdatabaseflag
 {
@@ -1008,7 +1008,7 @@ enum characterdatabaseflag
   HAS_BEEN_SEEN = 2
 };
 
-#define DEPENDS_ON_ATTRIBUTES 0xFFFF
+cint DEPENDS_ON_ATTRIBUTES = 0xFFFF;
 
 enum tiredness
 {
@@ -1017,8 +1017,8 @@ enum tiredness
   UNTIRED = 2
 };
 
-#define DEFAULT_GENERATION_DANGER 0.05
-#define ANGEL_GENERATION_DANGER 0.10
+cdouble DEFAULT_GENERATION_DANGER = 0.05;
+cdouble ANGEL_GENERATION_DANGER = 0.10;
 
 enum duplicationflag
 {
@@ -1043,7 +1043,7 @@ enum fluidflag
   FLUID_INSIDE = 2
 };
 
-#define COMMAND_FLAGS 4
+cint COMMAND_FLAGS = 4;
 
 enum commandflag
 {
@@ -1054,7 +1054,7 @@ enum commandflag
   ALL_COMMAND_FLAGS = 1|2|4|8
 };
 
-#define CHAT_MENU_ENTRIES 5
+cint CHAT_MENU_ENTRIES = 5;
 
 enum managementflag
 {
@@ -1066,9 +1066,9 @@ enum managementflag
   ALL_MANAGEMENT_FLAGS = 1|2|4|8|16
 };
 
-#define NO_PARAMETERS 0xFF
+cuchar NO_PARAMETERS = 0xFF;
 
-#define CURSOR_TYPES 4
+cint CURSOR_TYPES = 4;
 
 enum cursortype
 {
@@ -1095,7 +1095,7 @@ enum colortype
   YELLOW_FRACTAL = 4
 };
 
-#define PHYSICAL_DAMAGE_TYPES 3
+cint PHYSICAL_DAMAGE_TYPES = 3;
 
 enum physicaldamagetype
 {
@@ -1104,7 +1104,7 @@ enum physicaldamagetype
   PIERCE = 4
 };
 
-#define SILHOUETTE_TYPES 2
+cint SILHOUETTE_TYPES = 2;
 
 enum silhouettetype
 {
@@ -1354,7 +1354,7 @@ enum materialinteractionflag
 /* End of DataBase flags */
 /*************************/
 
-#define TILE_SIZE 16
+cint TILE_SIZE = 16;
 cv2 TILE_V2(TILE_SIZE, TILE_SIZE);
 
 enum blitdataflag
@@ -1364,7 +1364,7 @@ enum blitdataflag
   ALLOW_ALPHA = 0x20000
 };
 
-#define TALENTS 4
+cint TALENTS = 4;
 
 enum talent
 {
@@ -1374,19 +1374,19 @@ enum talent
   TALENT_CLEVER
 };
 
-#define BORDER_PARTNER_ANIMATED (16 << 24)
+culong BORDER_PARTNER_ANIMATED = 16 << 24;
 
 enum roomflag
 {
   NO_MONSTER_GENERATION = 1
 };
 
-#define NO_TAMING -1
+cint NO_TAMING = -1;
 
-#define SADIST_HIT 1
+cint SADIST_HIT = 1;
 
-#define EQUIPMENT_DATAS 13
+cint EQUIPMENT_DATAS = 13;
 
-#define SPECIAL_CONFIGURATION_GENERATION_LEVELS 2
+cint SPECIAL_CONFIGURATION_GENERATION_LEVELS = 2;
 
 #endif

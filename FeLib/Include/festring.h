@@ -17,8 +17,6 @@
 
 #include "felibdef.h"
 
-#define FESTRING_PAGE 0x7F
-
 class festring
 {
  public:
@@ -113,6 +111,8 @@ class festring
   sizetype OwnsData : 1;
   sizetype Reserved : 31;
 };
+
+festring::csizetype FESTRING_PAGE = 0x7F;
 
 class festringpile
 {

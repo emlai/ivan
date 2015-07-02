@@ -33,7 +33,7 @@ cint MapMoveY[9] = { -1, -1, -1, 0, 0, 1, 1, 1, 0 };
 
 culong SquarePartTickMask[4] = { 0xFF, 0xFF00, 0xFF0000, 0xFF000000 };
 
-#define FPI 3.1415926535897932384626433832795
+cdouble FPI = 3.1415926535897932384626433832795;
 
 /* Btw, both __attribute__ ((regparm(3))) and __fastcall SUCK! */
 
@@ -145,7 +145,7 @@ enum color : col16
   BLACK = 0x0000
 };
 
-#define NORMAL_LUMINANCE 0x808080
+ccol24 NORMAL_LUMINANCE = 0x808080;
 
 enum keycode
 {
@@ -168,7 +168,7 @@ enum keycode
   KEY_NUMPAD_5 = 2
 };
 
-#define NO_FLAME 0xFFFF
+cint NO_FLAME = 0xFFFF;
 
 enum felistflag
 {
@@ -187,11 +187,11 @@ enum felisterror
   NOTHING_SELECTED = 0xFFFD
 };
 
-#define NO_LIMIT 0xFFFF
+cint NO_LIMIT = 0xFFFF;
 
-#define MAX_CONTROLS 0x10
+cint MAX_CONTROLS = 0x10;
 
-#define HIGHEST 0xFF
+cint HIGHEST = 0xFF;
 
 enum feioexitcode
 {
@@ -199,7 +199,7 @@ enum feioexitcode
   ABORTED
 };
 
-#define MAX_CONFIG_OPTIONS 0x100
+cint MAX_CONFIG_OPTIONS = 0x100;
 
 enum priorityconstant
 {
@@ -209,7 +209,7 @@ enum priorityconstant
   AVERAGE_PRIORITY = (8 << 4) + 8
 };
 
-#define NO_IMAGE 0xFFFF
+cuint NO_IMAGE = 0xFFFF;
 
 enum
 {
@@ -225,11 +225,11 @@ enum mapmathflag
   ALLOW_END_FAILURE = 2
 };
 
-#define MAX_RAND 0x7FFFFFFF
+clong MAX_RAND = 0x7FFFFFFF;
 
-#define TRANSPARENT_PALETTE_INDEX 191
+cpaletteindex TRANSPARENT_PALETTE_INDEX = 191;
 
-#define MAX_HIGHSCORES 100
+cuint MAX_HIGHSCORES = 100;
 
 enum sparkleflag
 {

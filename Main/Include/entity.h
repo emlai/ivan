@@ -19,7 +19,7 @@
 
 enum entityflag { EXISTS = 1, HAS_BE = 2 };
 
-#define ENTITY_FLAGS 3
+cint ENTITY_FLAGS = 3;
 
 class square;
 struct v2;

@@ -12,9 +12,9 @@
 
 /* Compiled through wmapset.cpp */
 
-#define MAX_TEMPERATURE	  27		//increase for a warmer world
-#define LATITUDE_EFFECT	  40		//increase for more effect
-#define ALTITUDE_EFFECT	  0.02
+cint MAX_TEMPERATURE = 27;		//increase for a warmer world
+cint LATITUDE_EFFECT = 40;		//increase for more effect
+cdouble ALTITUDE_EFFECT = 0.02;
 
 enum temperaturelimit
 {

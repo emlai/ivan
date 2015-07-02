@@ -5072,7 +5072,7 @@ void slave::PostConstruct()
 }
 
 cint TalentOfAttribute[ATTRIBUTES] = { TALENT_HEALTHY, TALENT_FAST_N_ACCURATE, TALENT_CLEVER, TALENT_CLEVER, TALENT_CLEVER, TALENT_CLEVER, TALENT_CLEVER, TALENT_STRONG, TALENT_STRONG, TALENT_FAST_N_ACCURATE, TALENT_FAST_N_ACCURATE };
-const double TalentBonusOfAttribute[ATTRIBUTES] = { 1.1, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25 };
+cdouble TalentBonusOfAttribute[ATTRIBUTES] = { 1.1, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25 };
 
 double playerkind::GetNaturalExperience(int Identifier) const
 {
