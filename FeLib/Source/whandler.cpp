@@ -9,6 +9,8 @@
  *  along with this file for more details
  *
  */
+ 
+#include <cstdio>
 
 #include "whandler.h"
 #include "graphics.h"
